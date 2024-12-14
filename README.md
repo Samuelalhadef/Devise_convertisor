@@ -110,7 +110,7 @@ Le projet est constamment amélioré avec de nouvelles fonctionnalités en cours
 SAMUEL ALHADEF - [TWITTER](https://x.com/SAMUELALHADEF)
                - [LINKEDIN](https://www.linkedin.com/in/samuel-alhadef-190951257/)
 
-Lien du projet: [https://github.com/Samuelalhadef/PayFlow](https://github.com/Samuelalhadef/Devise_convertisor)
+Lien du projet: [https://github.com/Samuelalhadef/Devise_convertisor](https://github.com/Samuelalhadef/Devise_convertisor)
 
 ---
 <div align="center">
