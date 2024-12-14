@@ -1,0 +1,276 @@
+:root {
+    --chart-primary: #2563eb;
+    --chart-secondary: #3b82f6;
+    --chart-success: #10b981;
+    --chart-danger: #ef4444;
+    --chart-warning: #f59e0b;
+    --chart-grid: #e2e8f0;
+    --chart-tooltip: #1e293b;
+    --surface-primary: #ffffff;
+    --surface-secondary: #f8fafc;
+    --text-primary: #1e293b;
+    --text-secondary: #64748b;
+    --border-light: #e2e8f0;
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+}
+
+.charts-container {
+    max-width: 1400px;
+    margin: 2rem auto;
+    padding: 0 1.5rem;
+}
+
+/* Card principale */
+.charts-card {
+    background: var(--surface-primary);
+    border-radius: 1.5rem;
+    padding: 2rem;
+    box-shadow: var(--shadow-md);
+}
+
+/* En-tête du graphique */
+.chart-header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+    margin-bottom: 2.5rem;
+}
+
+.chart-title-section {
+    flex: 1;
+}
+
+.chart-title-section h1 {
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+}
+
+.chart-subtitle {
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+}
+
+/* Contrôles du graphique */
+.chart-controls {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+/* Sélecteur de devises */
+.currency-selector {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.75rem 1.25rem;
+    background: var(--surface-secondary);
+    border-radius: 1rem;
+    border: 1px solid var(--border-light);
+}
+
+.currency-pair {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.currency-select {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 0.75rem;
+    background: var(--surface-primary);
+    border-radius: 0.75rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.currency-select:hover {
+    background: var(--chart-primary);
+    color: white;
+}
+
+.currency-select img {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+}
+
+.exchange-icon {
+    color: var(--text-secondary);
+    font-size: 1rem;
+}
+
+/* Sélecteur de période */
+.time-range {
+    display: flex;
+    background: var(--surface-secondary);
+    padding: 0.375rem;
+    border-radius: 1rem;
+    border: 1px solid var(--border-light);
+}
+
+.time-range button {
+    padding: 0.5rem 1.25rem;
+    border: none;
+    background: transparent;
+    color: var(--text-secondary);
+    font-weight: 500;
+    cursor: pointer;
+    border-radius: 0.75rem;
+    transition: all 0.2s ease;
+}
+
+.time-range button:hover {
+    color: var(--chart-primary);
+}
+
+.time-range button.active {
+    background: var(--surface-primary);
+    color: var(--chart-primary);
+    box-shadow: var(--shadow-sm);
+}
+
+/* Conteneur du graphique */
+.chart-wrapper {
+    position: relative;
+    width: 100%;
+    height: 450px;
+    margin: 2rem 0;
+    padding: 1.5rem;
+    background: var(--surface-secondary);
+    border-radius: 1rem;
+    border: 1px solid var(--border-light);
+}
+
+/* Grille des statistiques */
+.statistics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2.5rem;
+}
+
+.stat-card {
+    position: relative;
+    padding: 1.5rem;
+    background: var(--surface-secondary);
+    border-radius: 1rem;
+    border: 1px solid var(--border-light);
+    transition: all 0.2s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.stat-title {
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    margin-bottom: 0.5rem;
+}
+
+.stat-value {
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.25rem;
+}
+
+.stat-change {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.5rem;
+}
+
+.stat-change.positive {
+    background: rgba(16, 185, 129, 0.1);
+    color: var(--chart-success);
+}
+
+.stat-change.negative {
+    background: rgba(239, 68, 68, 0.1);
+    color: var(--chart-danger);
+}
+
+.stat-time {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+}
+
+/* Tooltip personnalisé */
+.chart-tooltip {
+    background: var(--chart-tooltip);
+    color: white;
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+    font-size: 0.875rem;
+    box-shadow: var(--shadow-md);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .charts-card {
+        padding: 1.5rem;
+    }
+
+    .chart-header {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 1.5rem;
+    }
+
+    .chart-controls {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .currency-selector {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .time-range {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .statistics-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.stat-card {
+    animation: fadeIn 0.3s ease-out forwards;
+}
+
+.chart-wrapper {
+    animation: fadeIn 0.5s ease-out forwards;
+}

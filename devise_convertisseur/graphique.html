@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Graphiques des taux de change</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="graphique.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-left">
+            <a href="index.html" class="nav-link">
+                <i class="fas fa-exchange-alt"></i>
+                <span>Convertir</span>
+            </a>
+            <a href="sendmoney.html" class="nav-link">
+                <i class="fas fa-paper-plane"></i>
+                <span>Envoyer</span>
+            </a>
+            <a href="graphique.html" class="nav-link active">
+                <i class="fas fa-chart-line"></i>
+                <span>Graphiques</span>
+            </a>
+        </div>
+        <div class="nav-right">
+            <a href="#" class="nav-link">
+                <i class="fas fa-bell"></i>
+                <span>Alertes</span>
+            </a>
+        </div>
+    </nav>
+
+    <main class="charts-container">
+        <div class="charts-card">
+            <div class="chart-header">
+                <div class="chart-title-section">
+                    <h1>Évolution des taux de change</h1>
+                    <p class="chart-subtitle">Suivez les variations en temps réel</p>
+                </div>
+                <div class="chart-controls">
+                    <div class="currency-selector">
+                        <div class="currency-pair">
+                            <select id="baseCurrency">
+                                <option value="EUR">EUR</option>
+                                <option value="USD">USD</option>
+                                <option value="GBP">GBP</option>
+                            </select>
+                            <i class="fas fa-exchange-alt exchange-icon"></i>
+                            <select id="targetCurrency">
+                                <option value="USD">USD</option>
+                                <option value="EUR">EUR</option>
+                                <option value="GBP">GBP</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="time-range">
+                        <button class="active">1J</button>
+                        <button>1S</button>
+                        <button>1M</button>
+                        <button>1A</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="chart-wrapper">
+                <canvas id="mainChart"></canvas>
+            </div>
+
+            <div class="statistics-grid">
+                <div class="stat-card">
+                    <span class="stat-title">Taux actuel</span>
+                    <span class="stat-value">0.0000</span>
+                    <span class="stat-change positive">+0.00%</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-title">Plus haut</span>
+                    <span class="stat-value">0.0000</span>
+                    <span class="stat-time">00:00</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-title">Plus bas</span>
+                    <span class="stat-value">0.0000</span>
+                    <span class="stat-time">00:00</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-title">Variation</span>
+                    <span class="stat-value">0.0000</span>
+                    <span class="stat-change positive">+0.00%</span>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="charts.js"></script>
+</body>
+</html>

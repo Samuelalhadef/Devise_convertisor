@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Convertisseur de Devises Pro</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-left">
+            <a href="#" class="nav-link active">
+                <i class="fas fa-exchange-alt"></i>
+                <span>Convertir</span>
+            </a>
+            <a href="sendmoney.html" class="nav-link">
+                <i class="fas fa-paper-plane"></i>
+                <span>Envoyer</span>
+            </a>
+            <a href="graphique.html" class="nav-link">
+                <i class="fas fa-chart-line"></i>
+                <span>Graphiques</span>
+            </a>
+        </div>
+        <div class="nav-right">
+            <a href="#" class="nav-link">
+                <i class="fas fa-bell"></i>
+                <span>Alertes</span>
+            </a>
+        </div>
+    </nav>
+
+    <main class="converter-container">
+        <div class="converter-card">
+            <div class="amount-section">
+                <label for="montant">Montant</label>
+                <div class="amount-input">
+                    <input 
+                        type="number" 
+                        id="montant" 
+                        value="1.00" 
+                        step="0.01" 
+                        min="0"
+                    >
+                    <span class="currency-tag" id="currency-tag">$</span>
+                </div>
+            </div>
+
+            <div class="currency-section">
+                <div class="currency-from">
+                    <label>De</label>
+                    <div class="currency-select" id="devise1-wrapper">
+                        <div class="selected-currency" id="devise1-selected">
+                            <img src="" alt="" class="flag-icon" id="flag1">
+                            <div class="currency-info">
+                                <span class="currency-code"></span>
+                                <span class="currency-name"></span>
+                            </div>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="currency-dropdown" id="devise1-dropdown">
+                            <!-- Les options seront ajoutées ici par JavaScript -->
+                        </div>
+                    </div>
+                </div>
+
+                <button class="swap-button" id="swap-currencies">
+                    <i class="fas fa-exchange-alt"></i>
+                </button>
+
+                <div class="currency-to">
+                    <label>vers</label>
+                    <div class="currency-select" id="devise2-wrapper">
+                        <div class="selected-currency" id="devise2-selected">
+                            <img src="" alt="" class="flag-icon" id="flag2">
+                            <div class="currency-info">
+                                <span class="currency-code"></span>
+                                <span class="currency-name"></span>
+                            </div>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="currency-dropdown" id="devise2-dropdown">
+                            <!-- Les options seront ajoutées ici par JavaScript -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <button class="convert-button" id="convert-button">
+                Convertir
+            </button>
+
+            <div class="result-section" id="result">
+                <!-- Le résultat sera affiché ici -->
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

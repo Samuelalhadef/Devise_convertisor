@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Envoyer de l'argent</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="sendmoney.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+<script type="text/javascript">
+   (function(){
+      emailjs.init("xcrdvgPUprLxVXPH2");
+   })();
+</script>
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-left">
+            <a href="index.html" class="nav-link">
+                <i class="fas fa-exchange-alt"></i>
+                <span>Convertir</span>
+            </a>
+            <a href="graphique.html" class="nav-link active">
+                <i class="fas fa-paper-plane"></i>
+                <span>Envoyer</span>
+            </a>
+            <a href="sendmoney.html" class="nav-link">
+                <i class="fas fa-chart-line"></i>
+                <span>Graphiques</span>
+            </a>
+        </div>
+        <div class="nav-right">
+            <a href="#" class="nav-link">
+                <i class="fas fa-bell"></i>
+                <span>Alertes</span>
+            </a>
+        </div>
+    </nav>
+
+    <main class="transfer-container">
+        <div class="transfer-card">
+            <div class="card-header">
+                <h1>Envoyer de l'argent</h1>
+                <p class="subtitle">Envoyez une demande de paiement par email</p>
+            </div>
+
+            <div class="progress-steps">
+                <div class="step active" data-step="1">
+                    <div class="step-number">1</div>
+                    <span class="step-label">Destinataire</span>
+                </div>
+                <div class="step" data-step="2">
+                    <div class="step-number">2</div>
+                    <span class="step-label">Montant</span>
+                </div>
+                <div class="step" data-step="3">
+                    <div class="step-number">3</div>
+                    <span class="step-label">Confirmation</span>
+                </div>
+            </div>
+
+            <form id="transferForm" class="transfer-form">
+                <!-- Étape 1 : Informations du destinataire -->
+                <div class="step-content" data-step="1">
+                    <div class="form-group">
+                        <label for="recipientName">Nom du destinataire</label>
+                        <div class="input-wrapper">
+                            <i class="fas fa-user"></i>
+                            <input type="text" id="recipientName" name="recipientName" required placeholder="Nom complet">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="recipientEmail">Email du destinataire</label>
+                        <div class="input-wrapper">
+                            <i class="fas fa-envelope"></i>
+                            <input type="email" id="recipientEmail" name="recipientEmail" required placeholder="email@exemple.com">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Pays du destinataire</label>
+                        <div class="country-select" id="countrySelect">
+                            <div class="selected-country">
+                                <img src="https://flagcdn.com/w20/fr.png" alt="France" class="flag-icon">
+                                <span>France</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="country-dropdown" id="countryDropdown">
+                                <!-- Les pays seront ajoutés en JavaScript -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="recent-transfers">
+                        <h3>Destinataires récents</h3>
+                        <div class="transfers-list">
+                            <!-- Les transferts récents seront ajoutés en JavaScript -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Étape 2 : Montant -->
+                <div class="step-content" data-step="2" style="display: none;">
+                    <div class="form-group">
+                        <label for="amount">Montant à envoyer</label>
+                        <div class="amount-input-wrapper">
+                            <input type="number" id="amount" name="amount" required min="0" step="0.01" placeholder="0.00">
+                            <select id="currency" name="currency">
+                                <option value="EUR">EUR</option>
+                                <option value="USD">USD</option>
+                                <option value="GBP">GBP</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Message (optionnel)</label>
+                        <textarea id="message" name="message" rows="4" placeholder="Ajoutez un message pour le destinataire"></textarea>
+                    </div>
+
+                    <div class="exchange-info">
+                        <div class="exchange-rate">
+                            <i class="fas fa-exchange-alt"></i>
+                            <span>1 EUR = 1.08 USD</span>
+                        </div>
+                        <div class="estimated-arrival">
+                            <i class="fas fa-clock"></i>
+                            <span>Arrivée estimée : 1-2 jours ouvrés</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Étape 3 : Confirmation -->
+                <div class="step-content" data-step="3" style="display: none;">
+                    <div class="confirmation-summary">
+                        <h3>Résumé de la transaction</h3>
+                        <div class="summary-item">
+                            <span class="label">Destinataire</span>
+                            <span class="value" id="summaryName">-</span>
+                        </div>
+                        <div class="summary-item">
+                            <span class="label">Email</span>
+                            <span class="value" id="summaryEmail">-</span>
+                        </div>
+                        <div class="summary-item">
+                            <span class="label">Montant</span>
+                            <span class="value" id="summaryAmount">-</span>
+                        </div>
+                        <div class="summary-item">
+                            <span class="label">Frais</span>
+                            <span class="value">0.00 €</span>
+                        </div>
+                        <div class="summary-total">
+                            <span class="label">Total</span>
+                            <span class="value" id="summaryTotal">-</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-navigation">
+                    <button type="button" id="prevButton" class="btn-secondary" style="display: none;">
+                        <i class="fas fa-arrow-left"></i>
+                        Retour
+                    </button>
+                    <button type="button" id="nextButton" class="btn-primary">
+                        Continuer
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                    <button type="submit" id="submitButton" class="btn-primary" style="display: none;">
+                        Envoyer la demande
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <script src="envoie.js"></script>
+</body>
+</html>
